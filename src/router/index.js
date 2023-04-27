@@ -8,10 +8,18 @@ const router = createRouter({
       path: '/',
       component: MainPage
     },
-    // {
-    //   path: '/about',
-    //   component: () => import('../views/AboutView.vue')
-    // }
+    {
+      path: '/views/study/binding',
+      component: () => import('../views/study/BindingPage.vue')
+    },
+    {
+      path: '/views/study/directive',
+      component: () => import('../views/study/DirectivePage.vue')
+    },
+    {
+      path: '/views/study/event',
+      component: () => import('../views/study/EventPage.vue')
+    },
   ]
 })
 
