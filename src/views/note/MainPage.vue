@@ -1,14 +1,22 @@
 <script setup>
 import NoteItem from '@/components/parts/NoteItem.vue'
-import { ref } from 'vue'
+import {ref } from 'vue'
 
 const noteList = ref([]);
 
 const onClickButtonAdd = () => {
     noteList.value.push({
-        id:new Date().getDate(),
+        id:Math.round(Math.random()*1000),
         name:'新規ノート',
+        mouseover:false,
     })
+}
+
+const onMouseover = (e) => {
+  noteList.value[e].mouseover = true;
+}
+const onMouseLeave = (e) =>{
+  noteList.value[e].mouseover = false;
 }
 
 </script>
@@ -17,9 +25,11 @@ const onClickButtonAdd = () => {
     <div class="left-menu">
       <!-- ノートリスト -->
       <NoteItem
-        v-for="note in noteList"
+        v-for="(note,index) in noteList"
         :key="note.id"
         :note="note"
+        @mouseover="onMouseover(index)"
+        @mouseleave="onMouseLeave(index)"
       />
       <!-- ノート追加ボタン -->
       <button class="transparent" @click="onClickButtonAdd">

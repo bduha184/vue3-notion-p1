@@ -5,9 +5,11 @@ import { RouterLink} from 'vue-router';
 <template>
   <!-- ナビゲーションバーをダークテーマで作成 -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <!-- タイトル --><a class="navbar-brand" href="/">TechpitNotion</a>
+    <!-- タイトル -->
+    <a class="navbar-brand" href="/">TechpitNotion</a>
 
-    <!-- 画面サイズに応じて折りたたむ設定  --><button
+    <!-- 画面サイズに応じて折りたたむ設定  -->
+    <button
       class="navbar-toggler"
       type="button"
       data-toggle="collapse"
