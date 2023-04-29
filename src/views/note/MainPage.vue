@@ -9,6 +9,7 @@ const onClickButtonAdd = () => {
         id:Math.round(Math.random()*1000),
         name:'新規ノート',
         mouseover:false,
+        isEditing:false,
     })
 }
 
@@ -17,6 +18,21 @@ const onMouseover = (e) => {
 }
 const onMouseLeave = (e) =>{
   noteList.value[e].mouseover = false;
+}
+
+const onDeleteNote = (e)=>{
+  const index = noteList.value.findIndex(elem => elem.id === e.id);
+  noteList.value.splice(index,1);
+}
+
+const onEditNote = (e) =>{
+  const index = noteList.value.findIndex(elem => elem.id === e.id);
+  noteList.value[index].isEditing = true;
+}
+
+const onEditEnd=(e)=> {
+  const index = noteList.value.findIndex(elem => elem.id === e.id);
+  noteList.value[index].isEditing = false;
 }
 
 </script>
@@ -30,6 +46,9 @@ const onMouseLeave = (e) =>{
         :note="note"
         @mouseover="onMouseover(index)"
         @mouseleave="onMouseLeave(index)"
+        @onDeleteNote="onDeleteNote"
+        @onEditNote="onEditNote"
+        @onEditEnd="onEditEnd"
       />
       <!-- ノート追加ボタン -->
       <button class="transparent" @click="onClickButtonAdd">
